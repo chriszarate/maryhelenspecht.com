@@ -1,0 +1,58 @@
+---
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+const accentColor = '#457';
+const bodyFontFamily = 'Charter, Georgia, serif';
+const headingFontFamily = 'Helvetica Neue, Helvetica, system-ui, sans-serif';
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" href="/favicon.ico" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style
+	define:vars={{ accentColor, bodyFontFamily, headingFontFamily }}
+	is:global
+>
+	html {
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		background-color: white;
+		color: black;
+		font-family: var(--bodyFontFamily);
+		font-size: 1.1rem;
+		line-height: 1.4;
+		margin: 3em auto;
+		max-width: 40em;
+		padding: 0 1em;
+	}
+
+	a {
+		color: var(--accentColor);
+		text-decoration: underline;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 1.5em 0 0.5em 0;
+	}
+</style>

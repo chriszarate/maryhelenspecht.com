@@ -1,0 +1,29 @@
+---
+import Header from '../components/Header.astro';
+import Layout from './Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Content from '../components/Content.astro';
+
+export interface Props {
+  content: string;
+	link: string;
+  published: string;
+  slug: string;
+	title: string;
+}
+
+const { content, link: activeLink, published, slug, title } = Astro.props;
+---
+<Layout title={title}>
+	<Header />
+	<Navigation activeLink={activeLink} />
+	<main>
+		<Content content={content} />
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: 3em 0;
+	}
+</style>

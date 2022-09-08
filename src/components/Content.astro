@@ -1,0 +1,82 @@
+---
+export interface Props {
+	content: string;
+}
+
+const { content } = Astro.props;
+---
+<div set:html={content} />
+
+<style is:global>
+	blockquote,
+	p {
+		margin: 1.25em 0;
+	}
+
+	blockquote {
+		border-left: solid 5px var(--accentColor);
+		padding: 0em 1.5em;
+	}
+
+	blockquote p {
+		margin: 0;
+		padding: 0.5em 0;
+	}
+
+	blockquote cite {
+		display: block;
+		text-align: right;
+	}
+
+	cite em {
+		font-style: normal;
+	}
+
+	.wp-element-button {
+		display: inline;
+	}
+
+	.wp-block-columns.is-layout-flex {
+		display: grid;
+		grid-template-columns: 175px auto;
+		margin-bottom: 1.5em;
+	}
+
+	.wp-block-column h2 {
+		margin-top: 0;
+	}
+
+	.wp-block-image {
+		border: solid 1px var(--accentColor);
+		height: auto;
+		margin: 0;
+		width: 150px;
+	}
+
+	.wp-block-image img {
+		height: auto;
+		width: 100%;
+	}
+
+	.wp-block-jetpack-slideshow ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.wp-block-jetpack-slideshow img {
+		height: auto;
+		width: 150px;
+	}
+
+	.wp-block-jetpack-slideshow li {
+		margin-right: 1em;
+	}
+
+	.wp-block-jetpack-slideshow figure {
+		margin: 0;
+	}
+</style>

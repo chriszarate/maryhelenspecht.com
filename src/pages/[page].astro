@@ -1,0 +1,17 @@
+---
+import Page from '../layouts/Page.astro';
+import { fetchPageBySlug } from '../lib/fetch-wpapi';
+
+const page = await fetchPageBySlug( Astro.params.page );
+
+if ( ! page ) {
+  return new Response(
+		null,
+		{
+			status: 404,
+			statusText: 'Not found',
+		}
+	);
+}
+---
+<Page {...page} />
