@@ -1,10 +1,20 @@
 ---
 import Page from '../layouts/Page.astro';
-import { fetchPageBySlug } from '../lib/fetch-wpapi';
+import { fetchPageBySlug, fetchPages } from '../lib/fetch-wpapi';
 
-const page = await fetchPageBySlug( Astro.params.page );
+export async function getStaticPaths() {
+	const pages = await fetchPages();
 
-if ( ! page ) {
+	return pages.map( page => ( {
+		params: { page: page.slug },
+		props: { page },
+	} ) );
+}
+
+const slug = await fetchPageBySlug( Astro.params.page );
+const page = Astro.props.page;
+
+if ( ! slug ) {
   return new Response(
 		null,
 		{
